@@ -8,8 +8,7 @@ from PIL import Image, ImageTk
 from itertools import count
 import tkinter as tk
 import string
-#import selecting
-# obtain audio from the microphone
+
 def func():
         r = sr.Recognizer()
         isl_gif=['all the best', 'any questions', 'are you angry', 'are you busy', 'are you hungry', 'are you sick', 'be careful',
@@ -31,7 +30,7 @@ def func():
 'may', 'mile', 'monday', 'mumbai', 'museum', 'muslim', 'nagpur', 'october', 'orange', 'pakistan', 'pass', 'police station',
 'post office', 'pune', 'punjab', 'rajasthan', 'ram', 'restaurant', 'saturday', 'september', 'shop', 'sleep', 'southafrica',
 'story', 'sunday', 'tamil nadu', 'temperature', 'temple', 'thursday', 'toilet', 'tomato', 'town', 'tuesday', 'usa', 'village',
-'voice', 'wednesday', 'weight']
+'voice', 'wednesday', 'weight','please wait for sometime','what is your mobile number','what are you doing','are you busy']
         
         
         arr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r',
@@ -43,10 +42,8 @@ def func():
                 while True:
                         print('Say something')
                         audio = r.listen(source)
-
-                                                        # recognize speech using Sphinx
                         try:
-                                a=r.recognize_google(audio)
+                                a=r.recognize_sphinx(audio)
                                 print("you said " + a.lower())
                                 
                                 for c in string.punctuation:
@@ -59,7 +56,6 @@ def func():
                                 elif(a.lower() in isl_gif):
                                     
                                     class ImageLabel(tk.Label):
-                                            """a label that displays images, and plays them if they are gifs"""
                                             def load(self, im):
                                                 if isinstance(im, str):
                                                     im = Image.open(im)
@@ -97,12 +93,11 @@ def func():
                                     root = tk.Tk()
                                     lbl = ImageLabel(root)
                                     lbl.pack()
-                                    lbl.load(r'/home/shubh/Videos/ISL_CODE/ISL/ISL_Gifs/{0}.gif'.format(a.lower()))
+                                    lbl.load(r'ISL_Gifs/{0}.gif'.format(a.lower()))
                                     root.mainloop()
                                 else:
 
                                     for i in range(len(a)):
-                                                    #a[i]=a[i].lower()
                                                     if(a[i] in arr):
                                             
                                                             ImageAddress = 'letters/'+a[i]+'.jpg'
@@ -110,8 +105,7 @@ def func():
                                                             ImageNumpyFormat = np.asarray(ImageItself)
                                                             plt.imshow(ImageNumpyFormat)
                                                             plt.draw()
-                                                            plt.pause(0.8) # pause how many seconds
-                                                            #plt.close()
+                                                            plt.pause(0.8)
                                                     else:
                                                             continue
 
@@ -119,15 +113,12 @@ def func():
                                print("Could not listen")
                         plt.close()
 
-#func()
 while 1:
   image   = "signlang.png"
   msg="HEARING IMPAIRMENT ASSISTANT"
-  choices = ["Live Voice","All Done!","Recorded Audio"]
+  choices = ["Live Voice","All Done!"] 
   reply   = buttonbox(msg,image=image,choices=choices)
   if reply ==choices[0]:
         func()
   if reply == choices[1]:
         quit()
-  if reply==choices[2]:
-        os.system("selecting.py")
