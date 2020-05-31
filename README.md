@@ -51,3 +51,4 @@ respective GIFs of the Phrase.
 **Due to considerable time required in learning the Sign Language, people find it difficult to communicate with these specially abled people, creating a communication gap. Thus the Audio to Sign Language converter is important and significant because it helps in providing information access and services to deaf people in Indian sign language and develops a scalable project which can be extended to capture whole vocabulary of ISL through manual and non-manual signs. It also can be developed as a desktop or mobile application to enable specially abled people to communicate easily and effectively with others.**
 
 The project before enhancement and modification was cloned from <a href = "https://github.com/Shubh-Yadav/Automatic-Indian-Sign-Language-Translator">Shubh-Yadav</a>
+This project is now modified for better and enhanced speech recognition. Also added the program to work in offline mode.
